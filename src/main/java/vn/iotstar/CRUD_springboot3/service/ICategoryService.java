@@ -1,5 +1,7 @@
 package vn.iotstar.CRUD_springboot3.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import vn.iotstar.CRUD_springboot3.entity.Category;
 
@@ -20,4 +22,12 @@ public interface ICategoryService {
     List<Category> findAll(Sort sort);
 
     Optional<Category> findCategoriesByCategoryname(String categoryname);
+
+
+    Page<Category> findAll(Pageable pageable);
+
+
+    Page<Category> findByCategoryname(String categoryname, Pageable pageable);
+
+    List<Category> findByCategoryname(String categoryname);
 }

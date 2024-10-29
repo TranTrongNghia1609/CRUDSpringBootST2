@@ -1,8 +1,8 @@
 package vn.iotstar.CRUD_springboot3.service.imp;
 
-import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
-import lombok.experimental.FieldDefaults;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import vn.iotstar.CRUD_springboot3.entity.Category;
@@ -12,11 +12,13 @@ import vn.iotstar.CRUD_springboot3.service.ICategoryService;
 import java.util.List;
 import java.util.Optional;
 @Service
-@RequiredArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class CategoryService implements ICategoryService {
+    @Autowired
     CategoryRepository categoryRepository;
 
+    public CategoryService(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
+    }
 
     @Override
     public List<Category> findAll() {
@@ -51,5 +53,21 @@ public class CategoryService implements ICategoryService {
     @Override
     public Optional<Category> findCategoriesByCategoryname(String categoryname) {
         return categoryRepository.findCategoriesByCategoryname(categoryname);
+    }
+
+
+    @Override
+    public Page<Category> findAll(Pageable pageable) {
+        return categoryRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<Category> findByCategoryname(String categoryname, Pageable pageable) {
+        return categoryRepository.findByCategoryname(categoryname, pageable);
+    }
+
+    @Override
+    public List<Category> findByCategoryname(String categoryname) {
+        return categoryRepository.findByCategoryname(categoryname);
     }
 }
