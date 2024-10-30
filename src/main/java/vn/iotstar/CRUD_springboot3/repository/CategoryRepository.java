@@ -12,5 +12,5 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     Optional<Category> findCategoriesByCategoryname(String categoryname);
     //Tìm kiếm nội dung theo tên
     List<Category> findByCategoryname(String categoryname);
-    Page<Category> findByCategoryname(String categoryname, Pageable pageable);
+    Page<Category> findByCategorynameContaining(String categoryname, Pageable pageable);
 }

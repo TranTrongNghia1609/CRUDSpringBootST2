@@ -101,9 +101,10 @@ public class CategoryController {
             List<Integer> pageNumbers = IntStream.rangeClosed(start, end)
                     .boxed().collect(Collectors.toList());
             model.addAttribute("pageNumbers", pageNumbers);
-            model.addAttribute("categoryPage", resultPage);
+
 
         }
+        model.addAttribute("categoryPage", resultPage);
         return "CRUD/category_search";
 
     }

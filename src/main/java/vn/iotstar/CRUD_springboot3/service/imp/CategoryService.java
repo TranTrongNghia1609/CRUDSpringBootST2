@@ -63,7 +63,7 @@ public class CategoryService implements ICategoryService {
 
     @Override
     public Page<Category> findByCategoryname(String categoryname, Pageable pageable) {
-        return categoryRepository.findByCategoryname(categoryname, pageable);
+        return categoryRepository.findByCategorynameContaining(categoryname, pageable);
     }
 
     @Override
